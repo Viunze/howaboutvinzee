@@ -43,6 +43,11 @@
             object-fit: cover; /* Crop if necessary to cover the circle */
             border-radius: 50%; /* Ensure the image itself is also circular */
         }
+        
+        /* Tambahan CSS untuk mengatur z-index tombol tab agar tidak tertutup konten lain saat sticky */
+        .sticky-tab-nav {
+            z-index: 20; 
+        }
     </style>
 </head>
 <body class="min-h-screen">
@@ -72,19 +77,22 @@
 
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
 
-        <div class="border-b border-gray-700 mb-8 md:mb-12 sticky top-0 bg-bg-color z-10 pt-4 -mt-4">
-            <nav class="flex space-x-4 sm:space-x-8 -mb-px" role="tablist">
-                <button id="tab-home" class="tab-button active py-3 text-sm sm:text-base font-medium text-gray-400 focus:outline-none" onclick="switchTab('home')" role="tab" data-en="🏠 Introduction" data-id="🏠 Pendahuluan">
+        <div class="border-b border-gray-700 mb-8 md:mb-12 sticky top-0 bg-bg-color z-10 pt-4 -mt-4 sticky-tab-nav">
+            <nav class="flex space-x-4 sm:space-x-8 -mb-px overflow-x-auto" role="tablist">
+                <button id="tab-home" class="tab-button active py-3 text-sm sm:text-base font-medium text-gray-400 focus:outline-none flex-shrink-0" onclick="switchTab('home')" role="tab" data-en="🏠 Introduction" data-id="🏠 Pendahuluan">
                     🏠 Introduction
                 </button>
-                <button id="tab-code" class="tab-button py-3 text-sm sm:text-base font-medium text-gray-400 focus:outline-none" onclick="switchTab('code')" role="tab" data-en="⚙️ Code Mastery" data-id="⚙️ Penguasaan Kode">
+                <button id="tab-code" class="tab-button py-3 text-sm sm:text-base font-medium text-gray-400 focus:outline-none flex-shrink-0" onclick="switchTab('code')" role="tab" data-en="⚙️ Code Mastery" data-id="⚙️ Penguasaan Kode">
                     ⚙️ Code Mastery
                 </button>
-                <button id="tab-gaming" class="tab-button py-3 text-sm sm:text-base font-medium text-gray-400 focus:outline-none" onclick="switchTab('gaming')" role="tab" data-en="🎮 Gaming & Scripts" data-id="🎮 Gaming & Skrip">
+                <button id="tab-gaming" class="tab-button py-3 text-sm sm:text-base font-medium text-gray-400 focus:outline-none flex-shrink-0" onclick="switchTab('gaming')" role="tab" data-en="🎮 Gaming & Scripts" data-id="🎮 Gaming & Skrip">
                     🎮 Gaming & Scripts
                 </button>
-                <button id="tab-vision" class="tab-button py-3 text-sm sm:text-base font-medium text-gray-400 focus:outline-none" onclick="switchTab('vision')" role="tab" data-en="💡 Vision & Leadership" data-id="💡 Visi & Kepemimpinan">
+                <button id="tab-vision" class="tab-button py-3 text-sm sm:text-base font-medium text-gray-400 focus:outline-none flex-shrink-0" onclick="switchTab('vision')" role="tab" data-en="💡 Vision & Leadership" data-id="💡 Visi & Kepemimpinan">
                     💡 Vision & Leadership
+                </button>
+                <button id="tab-cyber" class="tab-button py-3 text-sm sm:text-base font-medium text-gray-400 focus:outline-none flex-shrink-0" onclick="switchTab('cyber')" role="tab" data-en="🔒 Cyber Architecture" data-id="🔒 Arsitektur Siber">
+                    🔒 Cyber Architecture
                 </button>
             </nav>
         </div>
@@ -226,7 +234,7 @@
                     Despite being a homebody, his leadership is <span class="font-semibold" data-en="strategic and centralized" data-id="strategis dan terpusat">strategic and centralized</span>. He manages his team and business with the precision of a cyber commander, bridging physical isolation with a strong online presence and authority.
                     <span class="text-sm italic text-gray-500 block mt-1" data-en="[Despite being a homebody, his leadership is strategic and centralized, managing his team with the precision of a cyber commander.]" data-id="[Walaupun suka di rumah, kepemimpinannya bersifat strategis dan terpusat, mengelola timnya dengan presisi seorang komandan siber.]">[Despite being a homebody, his leadership is strategic and centralized, managing his team with the precision of a cyber commander.]</span>
                 </p>
-                <ul class="space-y-2 text-gray-300 list-none pl-0 mt-6 font-medium">
+                <ul class="space-y-2 text-gray-300 list-none pl-0 font-medium">
                     <li class="flex items-start" data-en="Manages members and organizes complex projects." data-id="Mengelola anggota dan mengorganisir proyek yang kompleks."><span class="mr-3 text-neon-blue">»</span> Manages members and organizes complex projects.</li>
                     <li class="flex items-start" data-en="Strategic operator running game boosting (joki) services." data-id="Operator strategis yang menjalankan layanan boosting game (joki)."><span class="mr-3 text-neon-blue">»</span> Strategic operator running game boosting (joki) services.</li>
                     <li class="flex items-start" data-en="Handles business operations and payments via Dana and GoPay." data-id="Menangani operasi bisnis dan pembayaran melalui Dana dan GoPay."><span class="mr-3 text-neon-blue">»</span> Handles business operations and payments via Dana and GoPay.</li>
@@ -254,7 +262,59 @@
             </div>
         </div>
 
-    </main>
+        <div id="content-cyber" class="tab-content hidden space-y-8">
+            <h2 class="text-3xl font-bold text-neon-blue mb-6" data-en="🔒 Cyber Defense & Architecture" data-id="🔒 Pertahanan & Arsitektur Siber">🔒 Cyber Defense & Architecture</h2>
+            <div class="bg-card p-8 rounded-xl shadow-neon/10 border border-gray-700/50 card-item">
+                <h3 class="text-2xl font-semibold text-white mb-4" data-en="Beyond the Firewall: The Security Mindset" data-id="Di Balik Firewall: Pola Pikir Keamanan">Beyond the Firewall: The Security Mindset</h3>
+                <p class="text-gray-400 mb-6 text-lg font-medium"
+                   data-en="For a Digital Architect, security is not an afterthought—it is the foundation. Vinzee-kun builds systems that are inherently resilient, focusing on the architectural integrity needed to withstand sophisticated attacks. He thinks like an attacker but codes like a guardian." 
+                   data-id="Bagi seorang Arsitek Digital, keamanan bukanlah hal tambahan—tetapi fondasi. Vinzee-kun membangun sistem yang secara inheren tangguh, berfokus pada integritas arsitektur yang diperlukan untuk menahan serangan canggih. Dia berpikir seperti penyerang tetapi membuat kode seperti seorang penjaga.">
+                    For a Digital Architect, security is not an afterthought—it is the foundation. Vinzee-kun builds systems that are inherently resilient, focusing on the architectural integrity needed to withstand sophisticated attacks. He thinks like an attacker but codes like a guardian.
+                </p>
+
+                <p class="text-gray-300 leading-relaxed mt-4 font-medium" 
+                   data-en="His profound mastery of server-side logic and backend communication (as mentioned in Code Mastery) gives him the unique ability to identify and neutralize deep-seated vulnerabilities that standard security scans often miss. This expertise ensures his products and the XploitForce community remain fortified." 
+                   data-id="Penguasaannya yang mendalam terhadap logika sisi server dan komunikasi backend (seperti yang disebutkan di Penguasaan Kode) memberinya kemampuan unik untuk mengidentifikasi dan menetralkan kerentanan tersembunyi yang sering dilewatkan oleh pemindaian keamanan standar. Keahlian ini memastikan produk-produknya dan komunitas XploitForce tetap kokoh.">
+                    His profound mastery of server-side logic and backend communication (as mentioned in Code Mastery) gives him the unique ability to identify and neutralize deep-seated vulnerabilities that standard security scans often miss. This expertise ensures his products and the XploitForce community remain <span class="font-semibold text-neon-blue" data-en="fortified" data-id="kokoh">fortified</span>.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-8">
+                <div class="bg-card p-8 rounded-xl shadow-neon/10 border border-gray-700/50 card-item">
+                    <h3 class="text-2xl font-semibold text-white mb-4" data-en="Defensive Engineering" data-id="Rekayasa Pertahanan">Defensive Engineering</h3>
+                    <ul class="space-y-3 text-gray-300 list-none pl-0 font-medium">
+                        <li class="flex items-start" 
+                            data-en="Designing Secure APIs with robust authentication and token management." 
+                            data-id="Merancang API Aman dengan otentikasi dan manajemen token yang kuat.">
+                            <span class="mr-3 text-green-400">✅</span> Designing Secure APIs with robust authentication and token management.
+                        </li>
+                        <li class="flex items-start"
+                            data-en="Implementing Data Validation and Sanitization to prevent injection attacks." 
+                            data-id="Mengimplementasikan Validasi dan Sanitasi Data untuk mencegah serangan injeksi.">
+                            <span class="mr-3 text-green-400">✅</span> Implementing Data Validation and Sanitization to prevent injection attacks.
+                        </li>
+                        <li class="flex items-start"
+                            data-en="Developing Anti-Tamper & Anti-Cheat Logic integrated directly into the core code." 
+                            data-id="Mengembangkan Logika Anti-Perusakan & Anti-Curang yang terintegrasi langsung ke dalam kode inti.">
+                            <span class="mr-3 text-green-400">✅</span> Developing Anti-Tamper & Anti-Cheat Logic integrated directly into the core code.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-card p-8 rounded-xl shadow-neon/10 border border-gray-700/50 card-item">
+                    <h3 class="text-2xl font-semibold text-white mb-4" data-en="Strategic Vulnerability Analysis" data-id="Analisis Kerentanan Strategis">Strategic Vulnerability Analysis</h3>
+                    <p class="text-gray-400 font-medium mb-4"
+                       data-en="By mastering offensive techniques (as needed for scripts), he is fully equipped to predict and patch system weaknesses before they can be exploited." 
+                       data-id="Dengan menguasai teknik ofensif (seperti yang dibutuhkan untuk skrip), ia sepenuhnya diperlengkapi untuk memprediksi dan menambal kelemahan sistem sebelum dapat dieksploitasi.">
+                        By mastering offensive techniques (as needed for scripts), he is fully equipped to predict and patch system weaknesses before they can be exploited.
+                    </p>
+                    <p class="text-sm italic text-gray-500" data-en="[Understanding the hack is the first step to truly secure a system.]" data-id="[Memahami peretasan adalah langkah pertama untuk benar-benar mengamankan sebuah sistem.]">
+                        [Understanding the hack is the first step to truly secure a system.]
+                    </p>
+                </div>
+            </div>
+        </div>
+        </main>
 
     <footer class="py-10 mt-12 border-t border-gray-700/50 text-center text-gray-500 text-sm">
         <p class="text-lg font-semibold mb-3 text-white" data-en="Connect with Vinzee-kun" data-id="Terhubung dengan Vinzee-kun">Connect with Vinzee-kun</p>
@@ -279,7 +339,7 @@
     <script>
         const STORAGE_KEY = 'vinzee_lang';
         const FLAG_INDONESIA_URL = 'https://files.catbox.moe/zgvyuh.jpg';
-        const FLAG_AMERICA_URL = 'https://files.catbox.moe/31bept.jpg'; // Menggunakan nama variabel yang jelas
+        const FLAG_AMERICA_URL = 'https://files.catbox.moe/31bept.jpg'; 
         
         let currentLang = 'en'; // Default language is English
 
@@ -321,6 +381,8 @@
             const elements = document.querySelectorAll('[data-en]');
             elements.forEach(el => {
                 const text = el.getAttribute(`data-${lang}`);
+                // Use innerText for translation to avoid conflicts with complex HTML, but innerHTML is kept 
+                // for this specific case to maintain bold/span tags within translated text if they exist.
                 if (text) {
                     el.innerHTML = text;
                 }
@@ -352,8 +414,19 @@
 
         // Initialize tabs and language on load
         document.addEventListener('DOMContentLoaded', () => {
-            switchTab('home'); // Ensure the 'home' tab is active on load
+            // Check if a tab preference is stored, otherwise default to 'home'
+            const storedTab = sessionStorage.getItem('activeTab') || 'home'; 
+            switchTab(storedTab); 
+            
             applyLanguage(localStorage.getItem(STORAGE_KEY) || 'en'); // Apply language from storage or default to 'en'
+            
+            // Simple logic to save active tab in session storage on click
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.addEventListener('click', () => {
+                    const tabName = button.id.replace('tab-', '');
+                    sessionStorage.setItem('activeTab', tabName);
+                });
+            });
         });
 
         // (The original script.js file may contain additional logic that needs to be maintained.)

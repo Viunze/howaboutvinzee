@@ -1,44 +1,73 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vinzee-kun | The Digital Architect</title>
-    <!-- Memuat Tailwind CSS dari CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-    <!-- Memuat file CSS Kustom Anda -->
     <link rel="stylesheet" href="style.css">
     
-    <!-- Memuat Font Awesome untuk Ikon (GitHub & TikTok) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        /* Custom styles for the translate button (if not in style.css) */
+        .translate-button {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            width: 56px; /* Slightly larger for the icon */
+            height: 56px;
+            border-radius: 50%;
+            background-color: #3b82f6; /* Blue-500 */
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            z-index: 50; /* Above all other elements */
+            transition: background-color 0.2s, transform 0.2s;
+        }
+
+        .translate-button:hover {
+            background-color: #2563eb; /* Blue-600 */
+            transform: scale(1.05);
+        }
+
+        .translate-button .flag-icon {
+            font-size: 1.5rem; /* Flag size */
+        }
+    </style>
 </head>
 <body class="min-h-screen">
 
-    <!-- Header / Hero Section -->
+    <button id="translate-button" class="translate-button" title="Translate to Indonesian" onclick="toggleLanguage()">
+        <span class="flag-icon" role="img" aria-label="Indonesian Flag">🇮🇩</span>
+    </button>
     <header class="py-12 md:py-20 border-b border-gray-700/50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             
-            <!-- Logo Vinzee-kun -->
             <img src="https://files.catbox.moe/itb96q.jpeg" alt="Vinzee-kun Logo" 
                  class="w-24 h-24 sm:w-32 sm:h-32 mx-auto rounded-full object-cover shadow-neon mb-6 ring-4 ring-blue-500/50">
             
-            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold mb-4 leading-tight gradient-text">
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold mb-4 leading-tight gradient-text" data-en="Vinzee-kun" data-id="Vinzee-kun">
                 Vinzee-kun
             </h1>
-            <p class="text-xl sm:text-2xl font-semibold text-gray-300">
+            <p class="text-xl sm:text-2xl font-semibold text-gray-300" data-en="— The Digital Architect & Controller of Code 💻🔥" data-id="— Arsitek Digital & Pengendali Kode 💻🔥">
                 — The Digital Architect & Controller of Code 💻🔥
             </p>
-            <p class="mt-8 max-w-3xl mx-auto text-gray-300 text-lg font-medium">
+            <p class="mt-8 max-w-3xl mx-auto text-gray-300 text-lg font-medium" 
+               data-en="In the digital realm, many people can code — but only a few can truly bend systems to their will. Among them stands one name that echoes across servers, communities, and codes: Vinzee-kun." 
+               data-id="Di dunia digital, banyak orang bisa membuat kode — tetapi hanya sedikit yang benar-benar bisa membengkokkan sistem sesuai keinginan mereka. Di antara mereka, berdiri satu nama yang bergema di seluruh server, komunitas, dan kode: Vinzee-kun.">
                 In the digital realm, many people can code — but only a few can truly bend systems to their will. Among them stands one name that echoes across servers, communities, and codes: Vinzee-kun.
             </p>
         </div>
     </header>
 
-    <!-- Main Content Container & Tabs -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
 
-        <!-- Tab Navigation -->
         <div class="border-b border-gray-700 mb-8 md:mb-12 sticky top-0 bg-bg-color z-10 pt-4 -mt-4">
             <nav class="flex space-x-4 sm:space-x-8 -mb-px" role="tablist">
                 <button id="tab-home" class="tab-button active py-3 text-sm sm:text-base font-medium text-gray-400 focus:outline-none" onclick="switchTab('home')" role="tab">
@@ -56,65 +85,63 @@
             </nav>
         </div>
 
-        <!-- Tab Content Containers -->
-
-        <!-- 1. Home / Intro Content -->
         <div id="content-home" class="tab-content space-y-8">
             <div class="bg-card p-6 md:p-10 rounded-xl shadow-lg border border-gray-700/50 card-item">
-                <h2 class="text-3xl font-bold text-neon-blue mb-4">A Hybrid of Mastery</h2>
-                <p class="text-gray-300 leading-relaxed text-lg font-medium">
-                    Vinzee-kun isn’t just a programmer or a gamer. He’s a creator, strategist, and innovator — someone who can build, control, and understand the digital world from the inside out. He is a one-man powerhouse capable of building entire ecosystems. <span class="font-semibold">He doesn’t follow the system. He creates it.</span>
+                <h2 class="text-3xl font-bold text-neon-blue mb-4" data-en="A Hybrid of Mastery" data-id="Hibrida Kemahiran">A Hybrid of Mastery</h2>
+                <p class="text-gray-300 leading-relaxed text-lg font-medium" 
+                   data-en="Vinzee-kun isn’t just a programmer or a gamer. He’s a creator, strategist, and innovator — someone who can build, control, and understand the digital world from the inside out. He is a one-man powerhouse capable of building entire ecosystems. He doesn’t follow the system. He creates it." 
+                   data-id="Vinzee-kun bukan hanya seorang programmer atau gamer. Dia adalah seorang pencipta, ahli strategi, dan inovator — seseorang yang dapat membangun, mengontrol, dan memahami dunia digital dari dalam ke luar. Dia adalah pusat kekuatan satu orang yang mampu membangun seluruh ekosistem. Dia tidak mengikuti sistem. Dia menciptakannya.">
+                    Vinzee-kun isn’t just a programmer or a gamer. He’s a creator, strategist, and innovator — someone who can build, control, and understand the digital world from the inside out. He is a one-man powerhouse capable of building entire ecosystems. <span class="font-semibold" data-en="He doesn’t follow the system. He creates it." data-id="Dia tidak mengikuti sistem. Dia menciptakannya.">He doesn’t follow the system. He creates it.</span>
                 </p>
             </div>
 
-            <!-- KARAKTERISTIK BARU -->
             <div class="bg-card p-6 md:p-8 rounded-xl shadow-lg border border-gray-700/50 card-item">
-                <h2 class="text-3xl font-bold text-white mb-4">Karakteristik Inti & Filosofi Oprasional</h2>
-                <p class="text-gray-400 leading-relaxed font-medium mb-4">
-                    Vinzee-kun dikenal sebagai individu yang secara jujur mengakui sifatnya <span class="font-semibold text-neon-blue">agak malas sekolah</span>, menunjukkan bahwa pembelajaran formal terasa kurang relevan dibandingkan keahlian yang ia peroleh secara otodidak. Dia adalah seorang <span class="font-semibold text-neon-blue">rumahan sejati (suka di rumah)</span>, menemukan kenyamanan dan efisiensi tertinggi di lingkungan digitalnya sendiri. Keahlian utamanya adalah <span class="font-semibold text-neon-blue">di dalam internet</span>—seorang master siber, di mana keahliannya diakui jauh melampaui gelar akademis. Baginya, dunia maya adalah ruang kelas dan medannya.
+                <h2 class="text-3xl font-bold text-white mb-4" data-en="Core Characteristics & Operational Philosophy" data-id="Karakteristik Inti & Filosofi Oprasional">Core Characteristics & Operational Philosophy</h2>
+                <p class="text-gray-400 leading-relaxed font-medium mb-4"
+                   data-en="Vinzee-kun is honestly known for being somewhat 'school-lazy', suggesting that formal learning feels less relevant than the expertise he gained through self-study. He is a true 'homebody', finding supreme comfort and efficiency in his own digital environment. His core mastery lies 'within the internet'—a cyber master whose skills are recognized far beyond academic degrees. For him, the online world is both his classroom and his battleground."
+                   data-id="Vinzee-kun dikenal sebagai individu yang secara jujur mengakui sifatnya agak malas sekolah, menunjukkan bahwa pembelajaran formal terasa kurang relevan dibandingkan keahlian yang ia peroleh secara otodidak. Dia adalah seorang rumahan sejati (suka di rumah), menemukan kenyamanan dan efisiensi tertinggi di lingkungan digitalnya sendiri. Keahlian utamanya adalah di dalam internet—seorang master siber, di mana keahliannya diakui jauh melampaui gelar akademis. Baginya, dunia maya adalah ruang kelas dan medannya.">
+                    Vinzee-kun is honestly known for being somewhat <span class="font-semibold text-neon-blue" data-en="'school-lazy'" data-id="agak malas sekolah">'school-lazy'</span>, suggesting that formal learning feels less relevant than the expertise he gained through self-study. He is a true <span class="font-semibold text-neon-blue" data-en="'homebody' (likes being at home)" data-id="rumahan sejati (suka di rumah)">'homebody' (likes being at home)</span>, finding supreme comfort and efficiency in his own digital environment. His core mastery lies <span class="font-semibold text-neon-blue" data-en="'within the internet'" data-id="di dalam internet">'within the internet'</span>—a cyber master whose skills are recognized far beyond academic degrees. For him, the online world is both his classroom and his battleground.
                 </p>
-                <p class="text-sm italic text-gray-500 mt-6">
-                    [EN Translation] <span class="font-semibold">Core Philosophy:</span> Vinzee-kun is primarily self-taught, believing formal school is less relevant than his cyber skills. He is a true homebody, finding maximum efficiency and comfort in his digital domain. His mastery lies entirely within the internet, where he operates as a true cyber master.
+                <p class="text-sm italic text-gray-500 mt-6" data-en="[Translation Note: The above text replaces the previous EN Translation block.]" data-id="[Catatan Terjemahan: Teks di atas menggantikan blok Terjemahan EN sebelumnya.]">
+                    [Note: The primary text is now English; toggle the button for the Indonesian version.]
                 </p>
             </div>
-            <!-- AKHIR KARAKTERISTIK BARU -->
-
-
             <div class="grid md:grid-cols-3 gap-6">
                 <div class="bg-card p-6 rounded-xl border border-gray-700/50 card-item">
                     <span class="text-4xl mb-3 block">🧠</span>
-                    <h3 class="text-xl font-semibold mb-2 text-white">Mindset</h3>
-                    <p class="text-gray-400 text-sm font-medium">Thinks like a machine, codes with human intuition.</p>
+                    <h3 class="text-xl font-semibold mb-2 text-white" data-en="Mindset" data-id="Pola Pikir">Mindset</h3>
+                    <p class="text-gray-400 text-sm font-medium" data-en="Thinks like a machine, codes with human intuition." data-id="Berpikir seperti mesin, membuat kode dengan intuisi manusia.">Thinks like a machine, codes with human intuition.</p>
                 </div>
                 <div class="bg-card p-6 rounded-xl border border-gray-700/50 card-item">
                     <span class="text-4xl mb-3 block">⚡</span>
-                    <h3 class="text-xl font-semibold mb-2 text-white">Execution</h3>
-                    <p class="text-gray-400 text-sm font-medium">Integrated, efficient, and bug-free systems.</p>
+                    <h3 class="text-xl font-semibold mb-2 text-white" data-en="Execution" data-id="Eksekusi">Execution</h3>
+                    <p class="text-gray-400 text-sm font-medium" data-en="Integrated, efficient, and bug-free systems." data-id="Sistem yang terintegrasi, efisien, dan bebas bug.">Integrated, efficient, and bug-free systems.</p>
                 </div>
                 <div class="bg-card p-6 rounded-xl border border-gray-700/50 card-item">
                     <span class="text-4xl mb-3 block">👑</span>
-                    <h3 class="text-xl font-semibold mb-2 text-white">Legacy</h3>
-                    <p class="text-gray-400 text-sm font-medium">Founder of XploitForce, a community built to dominate.</p>
+                    <h3 class="text-xl font-semibold mb-2 text-white" data-en="Legacy" data-id="Warisan">Legacy</h3>
+                    <p class="text-gray-400 text-sm font-medium" data-en="Founder of XploitForce, a community built to dominate." data-id="Pendiri XploitForce, komunitas yang dibangun untuk mendominasi.">Founder of XploitForce, a community built to dominate.</p>
                 </div>
             </div>
         </div>
 
-        <!-- 2. The Master of Code Content -->
         <div id="content-code" class="tab-content hidden space-y-8">
-            <h2 class="text-3xl font-bold text-neon-blue mb-6">⚙️ The Master of Code</h2>
+            <h2 class="text-3xl font-bold text-neon-blue mb-6" data-en="⚙️ The Master of Code" data-id="⚙️ Master Kode">⚙️ The Master of Code</h2>
             <div class="grid lg:grid-cols-2 gap-8">
-                <!-- Core Skills -->
                 <div class="bg-card p-8 rounded-xl shadow-neon/10 border border-gray-700/50 card-item">
-                    <h3 class="text-2xl font-semibold text-white mb-4">Programming Command</h3>
-                    <p class="text-gray-400 mb-6 font-medium">Vinzee-kun commands multiple programming languages, crafting every line with precision and style. His code isn't just functional; it's engineered experience. </p>
-                    
-                    <!-- ELABORASI BARU -->
-                    <p class="text-gray-300 leading-relaxed mt-4 font-medium">
-                        Keahliannya adalah bukti dedikasi <span class="font-semibold">otodidak</span>; ia menguasai bahasa-bahasa ini murni melalui eksplorasi, eksperimen, dan penerapan praktis. Setiap baris kode mencerminkan solusi non-standar yang hanya dapat dikuasai oleh mereka yang mendalami internet tanpa dibatasi kurikulum formal.
-                        <span class="text-sm italic text-gray-500 block mt-1">[EN: His mastery is purely self-taught, built on practical exploration and non-standard solutions.]</span>
+                    <h3 class="text-2xl font-semibold text-white mb-4" data-en="Programming Command" data-id="Perintah Pemrograman">Programming Command</h3>
+                    <p class="text-gray-400 mb-6 font-medium" 
+                       data-en="Vinzee-kun commands multiple programming languages, crafting every line with precision and style. His code isn't just functional; it's engineered experience." 
+                       data-id="Vinzee-kun menguasai berbagai bahasa pemrograman, merangkai setiap baris dengan presisi dan gaya. Kodenya bukan hanya fungsional; itu adalah pengalaman yang direkayasa.">
+                        Vinzee-kun commands multiple programming languages, crafting every line with precision and style. His code isn't just functional; it's engineered experience. 
                     </p>
-                    <!-- AKHIR ELABORASI BARU -->
-
+                    
+                    <p class="text-gray-300 leading-relaxed mt-4 font-medium" 
+                       data-en="His expertise is a testament to his self-taught dedication; he masters these languages purely through exploration, experimentation, and practical application. Every line of code reflects non-standard solutions that can only be mastered by those who delve deeply into the internet unconstrained by formal curriculum." 
+                       data-id="Keahliannya adalah bukti dedikasi otodidak; ia menguasai bahasa-bahasa ini murni melalui eksplorasi, eksperimen, dan penerapan praktis. Setiap baris kode mencerminkan solusi non-standar yang hanya dapat dikuasai oleh mereka yang mendalami internet tanpa dibatasi kurikulum formal.">
+                        His expertise is a testament to his <span class="font-semibold" data-en="self-taught" data-id="otodidak">self-taught</span> dedication; he masters these languages purely through exploration, experimentation, and practical application. Every line of code reflects non-standard solutions that can only be mastered by those who delve deeply into the internet unconstrained by formal curriculum.
+                        <span class="text-sm italic text-gray-500 block mt-1" data-en="[Self-taught mastery on full display.]" data-id="[Kemahiran otodidak sepenuhnya ditampilkan.]">[Self-taught mastery on full display.]</span>
+                    </p>
                     <div class="flex flex-wrap gap-2 text-sm mt-6">
                         <span class="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full">HTML/CSS/JS</span>
                         <span class="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full">Python</span>
@@ -123,85 +150,101 @@
                     </div>
                 </div>
 
-                <!-- Capabilities -->
                 <div class="bg-card p-8 rounded-xl shadow-neon/10 border border-gray-700/50 card-item">
-                    <h3 class="text-2xl font-semibold text-white mb-4">Engineering Capabilities</h3>
+                    <h3 class="text-2xl font-semibold text-white mb-4" data-en="Engineering Capabilities" data-id="Kemampuan Rekayasa">Engineering Capabilities</h3>
                     <ul class="space-y-3 text-gray-300 list-none pl-0 font-medium">
-                        <li class="flex items-start"><span class="mr-3 text-neon-blue">»</span> Build lightning-fast <span class="font-semibold">Websites</span> with clean design and modern animations.</li>
-                        <li class="flex items-start"><span class="mr-3 text-neon-blue">»</span> Create <span class="font-semibold">WhatsApp bots</span> with custom menus, moderation, and self-coded <span class="font-semibold">virtex systems</span>.</li>
-                        <li class="flex items-start"><span class="mr-3 text-neon-blue">»</span> Develop advanced <span class="font-semibold">Roblox scripts</span> with full-featured GUIs and multi-map executor support.</li>
-                        <li class="flex items-start"><span class="mr-3 text-neon-blue">»</span> Design <span class="font-semibold">server-side and backdoor systems</span> that directly communicate with game servers.</li>
+                        <li class="flex items-start" 
+                            data-en="Build lightning-fast Websites with clean design and modern animations." 
+                            data-id="Membangun Situs Web secepat kilat dengan desain bersih dan animasi modern.">
+                            <span class="mr-3 text-neon-blue">»</span> Build lightning-fast <span class="font-semibold">Websites</span> with clean design and modern animations.
+                        </li>
+                        <li class="flex items-start"
+                            data-en="Create WhatsApp bots with custom menus, moderation, and self-coded virtex systems." 
+                            data-id="Membuat bot WhatsApp dengan menu khusus, moderasi, dan sistem virtex yang dibuat sendiri.">
+                            <span class="mr-3 text-neon-blue">»</span> Create <span class="font-semibold">WhatsApp bots</span> with custom menus, moderation, and self-coded <span class="font-semibold">virtex systems</span>.
+                        </li>
+                        <li class="flex items-start"
+                            data-en="Develop advanced Roblox scripts with full-featured GUIs and multi-map executor support." 
+                            data-id="Mengembangkan skrip Roblox canggih dengan GUI berfitur lengkap dan dukungan eksekutor multi-peta.">
+                            <span class="mr-3 text-neon-blue">»</span> Develop advanced <span class="font-semibold">Roblox scripts</span> with full-featured GUIs and multi-map executor support.
+                        </li>
+                        <li class="flex items-start"
+                            data-en="Design server-side and backdoor systems that directly communicate with game servers." 
+                            data-id="Merancang sistem server-side dan backdoor yang berkomunikasi langsung dengan server game.">
+                            <span class="mr-3 text-neon-blue">»</span> Design <span class="font-semibold">server-side and backdoor systems</span> that directly communicate with game servers.
+                        </li>
                     </ul>
                 </div>
             </div>
         </div>
 
-        <!-- 3. The True Gamer, Not Just a Player Content -->
         <div id="content-gaming" class="tab-content hidden space-y-8">
-            <h2 class="text-3xl font-bold text-neon-blue mb-6">🎮 The True Gamer, Not Just a Player</h2>
+            <h2 class="text-3xl font-bold text-neon-blue mb-6" data-en="🎮 The True Gamer, Not Just a Player" data-id="🎮 Gamer Sejati, Bukan Sekadar Pemain">🎮 The True Gamer, Not Just a Player</h2>
             <div class="bg-card p-8 rounded-xl shadow-neon/10 border border-gray-700/50 card-item">
-                <p class="text-gray-400 mb-6 text-lg font-medium">
+                <p class="text-gray-400 mb-6 text-lg font-medium"
+                   data-en="For Vinzee-kun, gaming isn’t just about playing — it’s about understanding the structure behind every move, from physics and hitboxes to timing systems. This structural knowledge allows him to create scripts of unparalleled efficiency." 
+                   data-id="Bagi Vinzee-kun, bermain game bukan hanya tentang bermain — ini tentang memahami struktur di balik setiap gerakan, dari fisika dan hitbox hingga sistem waktu. Pengetahuan struktural inilah yang memungkinkannya membuat skrip dengan efisiensi yang tak tertandingi.">
                     For Vinzee-kun, gaming isn’t just about playing — it’s about understanding the structure behind every move, from physics and hitboxes to timing systems. This structural knowledge allows him to create scripts of unparalleled efficiency.
                 </p>
 
-                <!-- ELABORASI BARU -->
-                 <p class="text-gray-300 leading-relaxed mt-4 font-medium">
-                    Kemampuannya untuk mendominasi game bukan berasal dari waktu bermain yang lama, melainkan dari kemampuannya untuk memecah arsitektur game. Dengan bekal ini, ia menciptakan alat yang <span class="font-semibold">tidak terdeteksi</span> dan <span class="font-semibold">efisien</span>, mengubah pengalaman bermain game menjadi eksperimen kontrol sistem.
-                    <span class="text-sm italic text-gray-500 block mt-1">[EN: His domination comes from breaking down game architecture, allowing him to create efficient and undetected tools.]</span>
+                <p class="text-gray-300 leading-relaxed mt-4 font-medium"
+                   data-en="His ability to dominate a game does not come from long playing hours, but from his skill in breaking down the game's architecture. With this knowledge, he creates tools that are undetected and efficient, turning the gaming experience into an experiment in system control." 
+                   data-id="Kemampuannya untuk mendominasi game bukan berasal dari waktu bermain yang lama, melainkan dari kemampuannya untuk memecah arsitektur game. Dengan bekal ini, ia menciptakan alat yang tidak terdeteksi dan efisien, mengubah pengalaman bermain game menjadi eksperimen kontrol sistem.">
+                    His ability to dominate a game does not come from long playing hours, but from his skill in breaking down the game's architecture. With this knowledge, he creates tools that are <span class="font-semibold" data-en="undetected" data-id="tidak terdeteksi">undetected</span> and <span class="font-semibold" data-en="efficient" data-id="efisien">efficient</span>, turning the gaming experience into an experiment in system control.
+                    <span class="text-sm italic text-gray-500 block mt-1" data-en="[His domination comes from breaking down game architecture.]" data-id="[Dominasinya berasal dari pembongkaran arsitektur game.]">[His domination comes from breaking down game architecture.]</span>
                 </p>
-                <!-- AKHIR ELABORASI BARU -->
-                
-                <h3 class="text-2xl font-semibold text-white mb-4 mt-6">Advanced Scripting Features</h3>
+                <h3 class="text-2xl font-semibold text-white mb-4 mt-6" data-en="Advanced Scripting Features" data-id="Fitur Skrip Tingkat Lanjut">Advanced Scripting Features</h3>
                 <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 font-medium">
-                    <div class="flex items-center bg-gray-800/50 p-3 rounded-lg"><span class="text-green-400 mr-2">✓</span> Auto Farm & Teleport</div>
-                    <div class="flex items-center bg-gray-800/50 p-3 rounded-lg"><span class="text-green-400 mr-2">✓</span> ESP & Aimbot Systems</div>
-                    <div class="flex items-center bg-gray-800/50 p-3 rounded-lg"><span class="text-green-400 mr-2">✓</span> Instant/Fast Attack Features</div>
-                    <div class="flex items-center bg-gray-800/50 p-3 rounded-lg"><span class="text-green-400 mr-2">✓</span> Ultra-efficient Auto Upgrade/Buy</div>
-                    <div class="flex items-center bg-gray-800/50 p-3 rounded-lg"><span class="text-green-400 mr-2">✓</span> Dynamic Executor GUIs (On/Off Toggles)</div>
-                    <div class="flex items-center bg-gray-800/50 p-3 rounded-lg"><span class="text-green-400 mr-2">✓</span> Universal GUI Systems (Elite Scripter Level)</div>
+                    <div class="flex items-center bg-gray-800/50 p-3 rounded-lg" data-en="Auto Farm & Teleport" data-id="Auto Farm & Teleport"><span class="text-green-400 mr-2">✓</span> Auto Farm & Teleport</div>
+                    <div class="flex items-center bg-gray-800/50 p-3 rounded-lg" data-en="ESP & Aimbot Systems" data-id="Sistem ESP & Aimbot"><span class="text-green-400 mr-2">✓</span> ESP & Aimbot Systems</div>
+                    <div class="flex items-center bg-gray-800/50 p-3 rounded-lg" data-en="Instant/Fast Attack Features" data-id="Fitur Serangan Instan/Cepat"><span class="text-green-400 mr-2">✓</span> Instant/Fast Attack Features</div>
+                    <div class="flex items-center bg-gray-800/50 p-3 rounded-lg" data-en="Ultra-efficient Auto Upgrade/Buy" data-id="Auto Upgrade/Beli Ultra-efisien"><span class="text-green-400 mr-2">✓</span> Ultra-efficient Auto Upgrade/Buy</div>
+                    <div class="flex items-center bg-gray-800/50 p-3 rounded-lg" data-en="Dynamic Executor GUIs (On/Off Toggles)" data-id="GUI Executor Dinamis (Tombol Nyala/Mati)"><span class="text-green-400 mr-2">✓</span> Dynamic Executor GUIs (On/Off Toggles)</div>
+                    <div class="flex items-center bg-gray-800/50 p-3 rounded-lg" data-en="Universal GUI Systems (Elite Scripter Level)" data-id="Sistem GUI Universal (Level Elite Scripter)"><span class="text-green-400 mr-2">✓</span> Universal GUI Systems (Elite Scripter Level)</div>
                 </div>
             </div>
         </div>
 
-        <!-- 4. A Visionary Leader & Community Builder Content -->
         <div id="content-vision" class="tab-content hidden space-y-10">
-            <h2 class="text-3xl font-bold text-neon-blue mb-6">💡 A Visionary Leader & Operator</h2>
+            <h2 class="text-3xl font-bold text-neon-blue mb-6" data-en="💡 A Visionary Leader & Operator" data-id="💡 Pemimpin & Operator Visioner">💡 A Visionary Leader & Operator</h2>
 
-            <!-- XploitForce Leadership -->
             <div class="bg-card p-8 rounded-xl shadow-neon/10 border border-gray-700/50 card-item">
-                <h3 class="text-2xl font-semibold text-white mb-4">Community & Strategy: XploitForce Founder</h3>
-                <p class="text-gray-400 mb-4 font-medium">
+                <h3 class="text-2xl font-semibold text-white mb-4" data-en="Community & Strategy: XploitForce Founder" data-id="Komunitas & Strategi: Pendiri XploitForce">Community & Strategy: XploitForce Founder</h3>
+                <p class="text-gray-400 mb-4 font-medium"
+                   data-en="As the founder of XploitForce, Vinzee-kun leads not with rules, but with purpose. He’s built a digital brotherhood that thrives on creativity, experimentation, and innovation, dominating the scripting world." 
+                   data-id="Sebagai pendiri XploitForce, Vinzee-kun memimpin bukan dengan aturan, tetapi dengan tujuan. Dia telah membangun persaudaraan digital yang berkembang pesat berdasarkan kreativitas, eksperimen, dan inovasi, mendominasi dunia skrip.">
                     As the founder of <span class="font-semibold">XploitForce</span>, Vinzee-kun leads not with rules, but with purpose. He’s built a digital brotherhood that thrives on creativity, experimentation, and innovation, dominating the scripting world.
                 </p>
 
-                <!-- ELABORASI BARU -->
-                <p class="text-gray-300 leading-relaxed mt-4 font-medium">
-                    Walaupun suka di rumah, kepemimpinannya bersifat <span class="font-semibold">strategis dan terpusat</span>. Ia mengelola tim dan bisnis dengan presisi seorang komandan siber, menjembatani isolasi fisik dengan kehadiran dan otoritas yang kuat secara online.
-                    <span class="text-sm italic text-gray-500 block mt-1">[EN: Despite being a homebody, his leadership is strategic and centralized, managing his team with the precision of a cyber commander.]</span>
+                <p class="text-gray-300 leading-relaxed mt-4 font-medium" 
+                   data-en="Despite being a homebody, his leadership is strategic and centralized. He manages his team and business with the precision of a cyber commander, bridging physical isolation with a strong online presence and authority." 
+                   data-id="Walaupun suka di rumah, kepemimpinannya bersifat strategis dan terpusat. Ia mengelola tim dan bisnis dengan presisi seorang komandan siber, menjembatani isolasi fisik dengan kehadiran dan otoritas yang kuat secara online.">
+                    Despite being a homebody, his leadership is <span class="font-semibold" data-en="strategic and centralized" data-id="strategis dan terpusat">strategic and centralized</span>. He manages his team and business with the precision of a cyber commander, bridging physical isolation with a strong online presence and authority.
+                    <span class="text-sm italic text-gray-500 block mt-1" data-en="[Strategic operator bridging isolation with authority.]" data-id="[Operator strategis menjembatani isolasi dengan otoritas.]">[Strategic operator bridging isolation with authority.]</span>
                 </p>
-                <!-- AKHIR ELABORASI BARU -->
-
                 <ul class="space-y-2 text-gray-300 list-none pl-0 mt-6 font-medium">
-                    <li class="flex items-start"><span class="mr-3 text-neon-blue">»</span> Manages members and organizes complex projects.</li>
-                    <li class="flex items-start"><span class="mr-3 text-neon-blue">»</span> Strategic operator running game boosting (joki) services.</li>
-                    <li class="flex items-start"><span class="mr-3 text-neon-blue">»</span> Handles business operations and payments via Dana and GoPay.</li>
+                    <li class="flex items-start" data-en="Manages members and organizes complex projects." data-id="Mengelola anggota dan mengorganisir proyek yang kompleks."><span class="mr-3 text-neon-blue">»</span> Manages members and organizes complex projects.</li>
+                    <li class="flex items-start" data-en="Strategic operator running game boosting (joki) services." data-id="Operator strategis yang menjalankan layanan boosting game (joki)."><span class="mr-3 text-neon-blue">»</span> Strategic operator running game boosting (joki) services.</li>
+                    <li class="flex items-start" data-en="Handles business operations and payments via Dana and GoPay." data-id="Menangani operasi bisnis dan pembayaran melalui Dana dan GoPay."><span class="mr-3 text-neon-blue">»</span> Handles business operations and payments via Dana and GoPay.</li>
                 </ul>
             </div>
 
             <div class="grid md:grid-cols-2 gap-8">
-                <!-- Visual Visionary -->
                 <div class="bg-card p-8 rounded-xl shadow-neon/10 border border-gray-700/50 card-item">
-                    <h3 class="text-2xl font-semibold text-white mb-4">🎬 The Visual Visionary</h3>
-                    <p class="text-gray-400 font-medium">
+                    <h3 class="text-2xl font-semibold text-white mb-4" data-en="🎬 The Visual Visionary" data-id="🎬 Visioner Visual">🎬 The Visual Visionary</h3>
+                    <p class="text-gray-400 font-medium"
+                       data-en="Beyond the code, he possesses an eye for art. He edits videos and presets with cinematic transitions, perfect timing, and a signature visual style, turning raw footage into professional, cinematic art." 
+                       data-id="Di luar kode, ia memiliki mata untuk seni. Dia mengedit video dan preset dengan transisi sinematik, waktu yang sempurna, dan gaya visual khas, mengubah rekaman mentah menjadi seni sinematik yang profesional.">
                         Beyond the code, he possesses an eye for art. He edits videos and presets with cinematic transitions, perfect timing, and a signature visual style, turning raw footage into professional, cinematic art.
                     </p>
                 </div>
 
-                <!-- Discipline & Mastery -->
                 <div class="bg-card p-8 rounded-xl shadow-neon/10 border border-gray-700/50 card-item">
-                    <h3 class="text-2xl font-semibold text-white mb-4">💪 Mind, Muscle, and Mastery</h3>
-                    <p class="text-gray-400 font-medium">
-                        Focus and discipline extend to the real world. He trains daily — strengthening his arms, biceps, and endurance. His discipline in fitness mirrors his precision in coding: <span class="font-semibold">consistent, calculated, and unstoppable</span>.
+                    <h3 class="text-2xl font-semibold text-white mb-4" data-en="💪 Mind, Muscle, and Mastery" data-id="💪 Pikiran, Otot, dan Kemahiran">💪 Mind, Muscle, and Mastery</h3>
+                    <p class="text-gray-400 font-medium"
+                       data-en="Focus and discipline extend to the real world. He trains daily — strengthening his arms, biceps, and endurance. His discipline in fitness mirrors his precision in coding: consistent, calculated, and unstoppable." 
+                       data-id="Fokus dan disiplin meluas ke dunia nyata. Dia berlatih setiap hari — memperkuat lengan, bisep, dan daya tahannya. Disiplinnya dalam kebugaran mencerminkan presisinya dalam pengkodean: konsisten, terhitung, dan tak terhentikan.">
+                        Focus and discipline extend to the real world. He trains daily — strengthening his arms, biceps, and endurance. His discipline in fitness mirrors his precision in coding: <span class="font-semibold" data-en="consistent, calculated, and unstoppable" data-id="konsisten, terhitung, dan tak terhentikan">consistent, calculated, and unstoppable</span>.
                     </p>
                 </div>
             </div>
@@ -209,32 +252,98 @@
 
     </main>
 
-    <!-- Footer yang diperbarui dengan tautan sosial -->
     <footer class="py-10 mt-12 border-t border-gray-700/50 text-center text-gray-500 text-sm">
-        <p class="text-lg font-semibold mb-3 text-white">Connect with Vinzee-kun</p>
+        <p class="text-lg font-semibold mb-3 text-white" data-en="Connect with Vinzee-kun" data-id="Terhubung dengan Vinzee-kun">Connect with Vinzee-kun</p>
         <div class="flex justify-center space-x-6 text-2xl mb-4">
-            <!-- Tautan GitHub dengan Ikon Font Awesome -->
             <a href="https://github.com/Viunze" target="_blank" class="hover:text-neon-blue transition-colors duration-200" title="GitHub">
                 <i class="fa-brands fa-github"></i>
             </a>
-            <!-- Tautan TikTok dengan Ikon Font Awesome -->
             <a href="https://www.tiktok.com/@viunze?is_from_webapp=1&sender_device=pc" target="_blank" class="hover:text-neon-blue transition-colors duration-200" title="TikTok">
                 <i class="fa-brands fa-tiktok"></i>
             </a>
-            <!-- Tautan WhatsApp DIBERBARUI -->
             <a href="https://wa.me/6287703248232" target="_blank" class="hover:text-neon-blue transition-colors duration-200" title="WhatsApp (6287703248232)">
                 <i class="fa-brands fa-whatsapp"></i>
             </a>
-            <!-- Tautan Discord DIBERBARUI -->
             <a href="https://discord.com/users/1258259523773272205" target="_blank" class="hover:text-neon-blue transition-colors duration-200" title="Discord (1258259523773272205)">
                 <i class="fa-brands fa-discord"></i>
             </a>
         </div>
-        <p>Vinzee-kun | The Digital Architect & Controller of Code</p>
-        <p class="mt-2 text-xs">Crafted with precision in the digital realm. © 2024</p>
+        <p data-en="Vinzee-kun | The Digital Architect & Controller of Code" data-id="Vinzee-kun | Arsitek Digital & Pengendali Kode">Vinzee-kun | The Digital Architect & Controller of Code</p>
+        <p class="mt-2 text-xs" data-en="Crafted with precision in the digital realm. © 2024" data-id="Dibuat dengan presisi di dunia digital. © 2024">Crafted with precision in the digital realm. © 2024</p>
     </footer>
 
-    <!-- Memuat file JavaScript Kustom Anda -->
+    <script>
+        const STORAGE_KEY = 'vinzee_lang';
+        let currentLang = 'en'; // Default language is English
+
+        // Function to switch between tabs (from original script.js logic)
+        function switchTab(tabName) {
+            // Hide all content tabs
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+
+            // Deactivate all tab buttons
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.classList.remove('active');
+                button.classList.remove('border-blue-500', 'text-blue-500'); // Remove active styling
+                button.classList.add('border-transparent', 'hover:text-gray-200'); // Add inactive styling
+            });
+
+            // Show the selected content tab
+            const activeContent = document.getElementById(`content-${tabName}`);
+            if (activeContent) {
+                activeContent.classList.remove('hidden');
+            }
+
+            // Activate the selected tab button
+            const activeTabButton = document.getElementById(`tab-${tabName}`);
+            if (activeTabButton) {
+                activeTabButton.classList.add('active');
+                activeTabButton.classList.add('border-blue-500', 'text-blue-500'); // Add active styling
+                activeTabButton.classList.remove('border-transparent', 'hover:text-gray-200'); // Remove inactive styling
+            }
+        }
+
+        // Initialize tabs on load
+        document.addEventListener('DOMContentLoaded', () => {
+            switchTab('home'); // Ensure the 'home' tab is active on load
+            applyLanguage(localStorage.getItem(STORAGE_KEY) || 'en'); // Apply language from storage or default to 'en'
+        });
+
+        // Function to apply language to all elements
+        function applyLanguage(lang) {
+            currentLang = lang;
+            document.documentElement.lang = lang;
+            
+            const elements = document.querySelectorAll('[data-en]');
+            elements.forEach(el => {
+                const text = el.getAttribute(`data-${lang}`);
+                if (text) {
+                    el.innerHTML = text;
+                }
+            });
+
+            // Update button text and title
+            const button = document.getElementById('translate-button');
+            if (lang === 'en') {
+                button.setAttribute('title', 'Translate to Indonesian');
+                button.innerHTML = '<span class="flag-icon" role="img" aria-label="Indonesian Flag">🇮🇩</span>';
+            } else {
+                button.setAttribute('title', 'Translate to English');
+                button.innerHTML = '<span class="flag-icon" role="img" aria-label="UK/US Flag">🇬🇧</span>'; // Using UK flag for English as a standard icon
+            }
+        }
+
+        // Function to toggle language
+        function toggleLanguage() {
+            const newLang = currentLang === 'en' ? 'id' : 'en';
+            localStorage.setItem(STORAGE_KEY, newLang);
+            applyLanguage(newLang);
+        }
+
+        // (The original script.js file may contain additional logic that needs to be maintained.)
+    </script>
     <script src="script.js"></script>
 </body>
 </html>

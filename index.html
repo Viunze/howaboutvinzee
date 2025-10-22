@@ -4,95 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vinzee-kun | The Digital Architect</title>
-    <!-- Memuat Font Inter dari Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-    
     <!-- Memuat Tailwind CSS dari CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <!-- Memuat file CSS Kustom Anda -->
+    <link rel="stylesheet" href="style.css">
     
-    <!-- Memuat Font Awesome untuk Ikon (GitHub, TikTok, WhatsApp, Discord) -->
+    <!-- Memuat Font Awesome untuk Ikon (GitHub & TikTok) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
-    <!-- 1. KONFIGURASI TAILWIND CUSTOM (MENDUKUNG NEON & DARK THEME) -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'bg-color': '#08080C', // Deep dark background
-                        'bg-card': '#1C1C23', // Dark card background
-                        'neon-blue': '#4F46E5', // Indigo/Blue for neon accents
-                    },
-                    boxShadow: {
-                        // Custom neon glow shadow for the image
-                        'neon': '0 0 10px rgba(79, 70, 229, 0.7), 0 0 20px rgba(79, 70, 229, 0.5)',
-                    }
-                }
-            }
-        }
-    </script>
-    
-    <!-- 2. STYLING KUSTOM (CSS) -->
-    <style>
-        /* Global Styles & Font */
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #08080C;
-            color: #ffffff;
-        }
-
-        /* Gradient Text for Hero Title */
-        .gradient-text {
-            background: linear-gradient(90deg, #6366F1, #8B5CF6, #EC4899);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            color: transparent; /* Fallback for browsers */
-        }
-
-        /* Tab Button Styling */
-        .tab-button {
-            transition: color 0.2s, border-color 0.2s;
-            border-bottom: 3px solid transparent;
-            padding-bottom: 0.75rem;
-        }
-
-        .tab-button:hover {
-            color: #FFFFFF;
-        }
-
-        .tab-button.active {
-            border-color: var(--tw-color-neon-blue, #4F46E5); /* Neon Blue Accent */
-            color: #FFFFFF;
-            font-weight: 600;
-        }
-
-        /* Card Hover Effect */
-        .card-item {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .card-item:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(79, 70, 229, 0.2);
-        }
-
-        /* Sticky Nav Background */
-        .sticky-nav-container {
-            background-color: var(--tw-color-bg-color, #08080C);
-        }
-    </style>
 </head>
-<body class="min-h-screen bg-bg-color">
+<body class="min-h-screen">
 
     <!-- Header / Hero Section -->
     <header class="py-12 md:py-20 border-b border-gray-700/50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             
             <!-- Logo Vinzee-kun -->
-            <!-- Placeholder Image Fallback URL -->
-            <img src="https://files.catbox.moe/itb96q.jpeg" 
-                 onerror="this.onerror=null; this.src='https://placehold.co/128x128/1C1C23/FFFFFF?text=VK'"
-                 alt="Vinzee-kun Logo" 
+            <img src="https://files.catbox.moe/itb96q.jpeg" alt="Vinzee-kun Logo" 
                  class="w-24 h-24 sm:w-32 sm:h-32 mx-auto rounded-full object-cover shadow-neon mb-6 ring-4 ring-blue-500/50">
             
             <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold mb-4 leading-tight gradient-text">
@@ -111,18 +39,18 @@
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
 
         <!-- Tab Navigation -->
-        <div class="border-b border-gray-700 mb-8 md:mb-12 sticky top-0 sticky-nav-container z-10 pt-4 -mt-4">
-            <nav class="flex space-x-4 sm:space-x-8 -mb-px overflow-x-auto" role="tablist">
-                <button id="tab-home" class="tab-button py-3 text-sm sm:text-base font-medium text-gray-400 focus:outline-none whitespace-nowrap" onclick="switchTab('home')" role="tab">
+        <div class="border-b border-gray-700 mb-8 md:mb-12 sticky top-0 bg-bg-color z-10 pt-4 -mt-4">
+            <nav class="flex space-x-4 sm:space-x-8 -mb-px" role="tablist">
+                <button id="tab-home" class="tab-button active py-3 text-sm sm:text-base font-medium text-gray-400 focus:outline-none" onclick="switchTab('home')" role="tab">
                     🏠 Introduction
                 </button>
-                <button id="tab-code" class="tab-button py-3 text-sm sm:text-base font-medium text-gray-400 focus:outline-none whitespace-nowrap" onclick="switchTab('code')" role="tab">
+                <button id="tab-code" class="tab-button py-3 text-sm sm:text-base font-medium text-gray-400 focus:outline-none" onclick="switchTab('code')" role="tab">
                     ⚙️ Code Mastery
                 </button>
-                <button id="tab-gaming" class="tab-button py-3 text-sm sm:text-base font-medium text-gray-400 focus:outline-none whitespace-nowrap" onclick="switchTab('gaming')" role="tab">
+                <button id="tab-gaming" class="tab-button py-3 text-sm sm:text-base font-medium text-gray-400 focus:outline-none" onclick="switchTab('gaming')" role="tab">
                     🎮 Gaming & Scripts
                 </button>
-                <button id="tab-vision" class="tab-button py-3 text-sm sm:text-base font-medium text-gray-400 focus:outline-none whitespace-nowrap" onclick="switchTab('vision')" role="tab">
+                <button id="tab-vision" class="tab-button py-3 text-sm sm:text-base font-medium text-gray-400 focus:outline-none" onclick="switchTab('vision')" role="tab">
                     💡 Vision & Leadership
                 </button>
             </nav>
@@ -217,7 +145,7 @@
                 </p>
 
                 <!-- ELABORASI BARU -->
-                    <p class="text-gray-300 leading-relaxed mt-4 font-medium">
+                 <p class="text-gray-300 leading-relaxed mt-4 font-medium">
                     Kemampuannya untuk mendominasi game bukan berasal dari waktu bermain yang lama, melainkan dari kemampuannya untuk memecah arsitektur game. Dengan bekal ini, ia menciptakan alat yang <span class="font-semibold">tidak terdeteksi</span> dan <span class="font-semibold">efisien</span>, mengubah pengalaman bermain game menjadi eksperimen kontrol sistem.
                     <span class="text-sm italic text-gray-500 block mt-1">[EN: His domination comes from breaking down game architecture, allowing him to create efficient and undetected tools.]</span>
                 </p>
@@ -282,7 +210,7 @@
     </main>
 
     <!-- Footer yang diperbarui dengan tautan sosial -->
-    <footer class="py-10 mt-12 border-t border-gray-700/50 text-center text-gray-500 text-sm bg-bg-color">
+    <footer class="py-10 mt-12 border-t border-gray-700/50 text-center text-gray-500 text-sm">
         <p class="text-lg font-semibold mb-3 text-white">Connect with Vinzee-kun</p>
         <div class="flex justify-center space-x-6 text-2xl mb-4">
             <!-- Tautan GitHub dengan Ikon Font Awesome -->
@@ -306,49 +234,7 @@
         <p class="mt-2 text-xs">Crafted with precision in the digital realm. © 2024</p>
     </footer>
 
-    <!-- 3. LOGIKA JAVASCRIPT KUSTOM (MENGGANTI script.js) -->
-    <script>
-        /**
-         * Mengganti tampilan konten berdasarkan tab yang dipilih.
-         * @param {string} tabId - ID tab yang akan diaktifkan (e.g., 'home', 'code').
-         */
-        function switchTab(tabId) {
-            // 1. Sembunyikan semua konten container
-            document.querySelectorAll('.tab-content').forEach(content => {
-                content.classList.add('hidden');
-            });
-
-            // 2. Nonaktifkan semua tombol tab
-            document.querySelectorAll('.tab-button').forEach(button => {
-                button.classList.remove('active', 'text-white');
-                button.classList.add('text-gray-400');
-            });
-
-            // 3. Tampilkan konten yang diminta
-            const activeContent = document.getElementById(`content-${tabId}`);
-            if (activeContent) {
-                activeContent.classList.remove('hidden');
-            }
-
-            // 4. Aktifkan tombol yang diminta dan berikan style 'active'
-            const activeButton = document.getElementById(`tab-${tabId}`);
-            if (activeButton) {
-                activeButton.classList.add('active');
-                activeButton.classList.remove('text-gray-400');
-            }
-        }
-
-        // Inisialisasi: Pastikan tab 'home' aktif saat pertama kali dimuat
-        window.onload = function() {
-            // Cek apakah ada hash di URL (misal: #code)
-            const hash = window.location.hash.substring(1);
-            if (hash && document.getElementById(`content-${hash}`)) {
-                switchTab(hash);
-            } else {
-                // Default ke tab 'home'
-                switchTab('home');
-            }
-        };
-    </script>
+    <!-- Memuat file JavaScript Kustom Anda -->
+    <script src="script.js"></script>
 </body>
 </html>

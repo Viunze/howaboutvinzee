@@ -48,6 +48,15 @@
         .sticky-tab-nav {
             z-index: 20; 
         }
+
+        /* Gaya Khusus untuk Logo Tab */
+        .tab-logo {
+            width: 20px;
+            height: 20px;
+            object-fit: contain;
+            /* Inversi warna logo untuk kontras pada dark mode, hanya jika logo asli berwarna terang */
+            filter: grayscale(100%) brightness(150%) drop-shadow(0 0 1px #3b82f6); 
+        }
     </style>
 </head>
 <body class="min-h-screen">
@@ -79,20 +88,29 @@
 
         <div class="border-b border-gray-700 mb-8 md:mb-12 sticky top-0 bg-bg-color z-10 pt-4 -mt-4 sticky-tab-nav">
             <nav class="flex space-x-4 sm:space-x-8 -mb-px overflow-x-auto" role="tablist">
+                
                 <button id="tab-home" class="tab-button active py-3 text-sm sm:text-base font-medium text-gray-400 focus:outline-none flex-shrink-0" onclick="switchTab('home')" role="tab" data-en="🏠 Introduction" data-id="🏠 Pendahuluan">
                     🏠 Introduction
                 </button>
+                
                 <button id="tab-code" class="tab-button py-3 text-sm sm:text-base font-medium text-gray-400 focus:outline-none flex-shrink-0" onclick="switchTab('code')" role="tab" data-en="⚙️ Code Mastery" data-id="⚙️ Penguasaan Kode">
-                    ⚙️ Code Mastery
+                    <img src="https://files.catbox.moe/1dlz93.jpg" alt="Programming Logo" class="tab-logo">
+                    Code Mastery
                 </button>
+                
                 <button id="tab-gaming" class="tab-button py-3 text-sm sm:text-base font-medium text-gray-400 focus:outline-none flex-shrink-0" onclick="switchTab('gaming')" role="tab" data-en="🎮 Gaming & Scripts" data-id="🎮 Gaming & Skrip">
-                    🎮 Gaming & Scripts
+                    <img src="https://files.catbox.moe/ge44gw.jpg alt="Gaming Logo" class="tab-logo">
+                    Gaming & Scripts
                 </button>
+                
                 <button id="tab-vision" class="tab-button py-3 text-sm sm:text-base font-medium text-gray-400 focus:outline-none flex-shrink-0" onclick="switchTab('vision')" role="tab" data-en="💡 Vision & Leadership" data-id="💡 Visi & Kepemimpinan">
-                    💡 Vision & Leadership
+                    <img src="https://files.catbox.moe/c5kem1.jpg" alt="Leader Logo" class="tab-logo">
+                    Vision & Leadership
                 </button>
+                
                 <button id="tab-cyber" class="tab-button py-3 text-sm sm:text-base font-medium text-gray-400 focus:outline-none flex-shrink-0" onclick="switchTab('cyber')" role="tab" data-en="🔒 Cyber Architecture" data-id="🔒 Arsitektur Siber">
-                    🔒 Cyber Architecture
+                    <img src="https://files.catbox.moe/1fmllt.jpg" alt="Cyber Logo" class="tab-logo">
+                    Cyber Architecture
                 </button>
             </nav>
         </div>
@@ -381,10 +399,36 @@
             const elements = document.querySelectorAll('[data-en]');
             elements.forEach(el => {
                 const text = el.getAttribute(`data-${lang}`);
-                // Use innerText for translation to avoid conflicts with complex HTML, but innerHTML is kept 
-                // for this specific case to maintain bold/span tags within translated text if they exist.
-                if (text) {
-                    el.innerHTML = text;
+                
+                // Jika elemen adalah tombol tab (yaitu memiliki tag img di dalamnya)
+                if (el.classList.contains('tab-button')) {
+                    // Ambil konten HTML saat ini
+                    const currentHtml = el.innerHTML;
+                    // Cari tag <img> (logo)
+                    const imgMatch = currentHtml.match(/<img[^>]*>/);
+                    const imgTag = imgMatch ? imgMatch[0] : '';
+                    
+                    // Ganti seluruh konten (termasuk ikon font '🏠' di tab 'home')
+                    if (lang === 'en') {
+                         el.innerHTML = el.getAttribute('data-en');
+                    } else {
+                         el.innerHTML = el.getAttribute('data-id');
+                    }
+                    
+                    // Jika ada logo img (bukan tab home yang mungkin hanya ikon font)
+                    // Hapus ikon font bawaan (misal '⚙️ ', '🎮 ', '💡 ', '🔒 ') dan ganti dengan imgTag
+                    if (imgTag) {
+                        // Hilangkan ikon font dari teks yang diterjemahkan (misal '⚙️ Penguasaan Kode' menjadi 'Penguasaan Kode')
+                        let cleanText = el.innerHTML.replace(/^(🏠|⚙️|🎮|💡|🔒)\s*/, '');
+                        el.innerHTML = imgTag + ' ' + cleanText.trim();
+                    }
+
+
+                } else {
+                    // Untuk elemen non-tab, gunakan innerHTML biasa
+                    if (text) {
+                        el.innerHTML = text;
+                    }
                 }
             });
 
@@ -418,6 +462,7 @@
             const storedTab = sessionStorage.getItem('activeTab') || 'home'; 
             switchTab(storedTab); 
             
+            // Perlu menerapkan terjemahan setelah DOM dimuat
             applyLanguage(localStorage.getItem(STORAGE_KEY) || 'en'); // Apply language from storage or default to 'en'
             
             // Simple logic to save active tab in session storage on click

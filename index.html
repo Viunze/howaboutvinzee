@@ -20,15 +20,16 @@
             height: 56px;
             border-radius: 50%;
             background-color: #3b82f6; /* Blue-500 */
-            color: white;
+            color: white; /* Not really used since it's an image */
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+            font-size: 1.5rem; /* Not really used since it's an image */
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
             cursor: pointer;
             z-index: 50; /* Above all other elements */
             transition: background-color 0.2s, transform 0.2s;
+            overflow: hidden; /* Ensure flag image stays within bounds */
         }
 
         .translate-button:hover {
@@ -37,14 +38,17 @@
         }
 
         .translate-button .flag-icon {
-            font-size: 1.5rem; /* Flag size */
+            width: 100%; /* Make image fill the button */
+            height: 100%; /* Make image fill the button */
+            object-fit: cover; /* Crop if necessary to cover the circle */
+            border-radius: 50%; /* Ensure the image itself is also circular */
         }
     </style>
 </head>
 <body class="min-h-screen">
 
     <button id="translate-button" class="translate-button" title="Translate to Indonesian" onclick="toggleLanguage()">
-        <span class="flag-icon" role="img" aria-label="Indonesian Flag">🇮🇩</span>
+        <img class="flag-icon" src="" alt="Flag">
     </button>
     <header class="py-12 md:py-20 border-b border-gray-700/50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -70,16 +74,16 @@
 
         <div class="border-b border-gray-700 mb-8 md:mb-12 sticky top-0 bg-bg-color z-10 pt-4 -mt-4">
             <nav class="flex space-x-4 sm:space-x-8 -mb-px" role="tablist">
-                <button id="tab-home" class="tab-button active py-3 text-sm sm:text-base font-medium text-gray-400 focus:outline-none" onclick="switchTab('home')" role="tab">
+                <button id="tab-home" class="tab-button active py-3 text-sm sm:text-base font-medium text-gray-400 focus:outline-none" onclick="switchTab('home')" role="tab" data-en="🏠 Introduction" data-id="🏠 Pendahuluan">
                     🏠 Introduction
                 </button>
-                <button id="tab-code" class="tab-button py-3 text-sm sm:text-base font-medium text-gray-400 focus:outline-none" onclick="switchTab('code')" role="tab">
+                <button id="tab-code" class="tab-button py-3 text-sm sm:text-base font-medium text-gray-400 focus:outline-none" onclick="switchTab('code')" role="tab" data-en="⚙️ Code Mastery" data-id="⚙️ Penguasaan Kode">
                     ⚙️ Code Mastery
                 </button>
-                <button id="tab-gaming" class="tab-button py-3 text-sm sm:text-base font-medium text-gray-400 focus:outline-none" onclick="switchTab('gaming')" role="tab">
+                <button id="tab-gaming" class="tab-button py-3 text-sm sm:text-base font-medium text-gray-400 focus:outline-none" onclick="switchTab('gaming')" role="tab" data-en="🎮 Gaming & Scripts" data-id="🎮 Gaming & Skrip">
                     🎮 Gaming & Scripts
                 </button>
-                <button id="tab-vision" class="tab-button py-3 text-sm sm:text-base font-medium text-gray-400 focus:outline-none" onclick="switchTab('vision')" role="tab">
+                <button id="tab-vision" class="tab-button py-3 text-sm sm:text-base font-medium text-gray-400 focus:outline-none" onclick="switchTab('vision')" role="tab" data-en="💡 Vision & Leadership" data-id="💡 Visi & Kepemimpinan">
                     💡 Vision & Leadership
                 </button>
             </nav>
@@ -98,12 +102,12 @@
             <div class="bg-card p-6 md:p-8 rounded-xl shadow-lg border border-gray-700/50 card-item">
                 <h2 class="text-3xl font-bold text-white mb-4" data-en="Core Characteristics & Operational Philosophy" data-id="Karakteristik Inti & Filosofi Oprasional">Core Characteristics & Operational Philosophy</h2>
                 <p class="text-gray-400 leading-relaxed font-medium mb-4"
-                   data-en="Vinzee-kun is honestly known for being somewhat 'school-lazy', suggesting that formal learning feels less relevant than the expertise he gained through self-study. He is a true 'homebody', finding supreme comfort and efficiency in his own digital environment. His core mastery lies 'within the internet'—a cyber master whose skills are recognized far beyond academic degrees. For him, the online world is both his classroom and his battleground."
+                   data-en="Vinzee-kun is honestly known for being somewhat 'school-lazy', suggesting that formal learning feels less relevant than the expertise he gained through self-study. He is a true 'homebody' (likes being at home), finding supreme comfort and efficiency in his own digital environment. His core mastery lies 'within the internet'—a cyber master whose skills are recognized far beyond academic degrees. For him, the online world is both his classroom and his battleground."
                    data-id="Vinzee-kun dikenal sebagai individu yang secara jujur mengakui sifatnya agak malas sekolah, menunjukkan bahwa pembelajaran formal terasa kurang relevan dibandingkan keahlian yang ia peroleh secara otodidak. Dia adalah seorang rumahan sejati (suka di rumah), menemukan kenyamanan dan efisiensi tertinggi di lingkungan digitalnya sendiri. Keahlian utamanya adalah di dalam internet—seorang master siber, di mana keahliannya diakui jauh melampaui gelar akademis. Baginya, dunia maya adalah ruang kelas dan medannya.">
                     Vinzee-kun is honestly known for being somewhat <span class="font-semibold text-neon-blue" data-en="'school-lazy'" data-id="agak malas sekolah">'school-lazy'</span>, suggesting that formal learning feels less relevant than the expertise he gained through self-study. He is a true <span class="font-semibold text-neon-blue" data-en="'homebody' (likes being at home)" data-id="rumahan sejati (suka di rumah)">'homebody' (likes being at home)</span>, finding supreme comfort and efficiency in his own digital environment. His core mastery lies <span class="font-semibold text-neon-blue" data-en="'within the internet'" data-id="di dalam internet">'within the internet'</span>—a cyber master whose skills are recognized far beyond academic degrees. For him, the online world is both his classroom and his battleground.
                 </p>
-                <p class="text-sm italic text-gray-500 mt-6" data-en="[Translation Note: The above text replaces the previous EN Translation block.]" data-id="[Catatan Terjemahan: Teks di atas menggantikan blok Terjemahan EN sebelumnya.]">
-                    [Note: The primary text is now English; toggle the button for the Indonesian version.]
+                <p class="text-sm italic text-gray-500 mt-6" data-en="[He does not follow the system; he creates it.]" data-id="[Dia tidak mengikuti sistem; dia menciptakannya.]">
+                    [He does not follow the system; he creates it.]
                 </p>
             </div>
             <div class="grid md:grid-cols-3 gap-6">
@@ -140,7 +144,7 @@
                        data-en="His expertise is a testament to his self-taught dedication; he masters these languages purely through exploration, experimentation, and practical application. Every line of code reflects non-standard solutions that can only be mastered by those who delve deeply into the internet unconstrained by formal curriculum." 
                        data-id="Keahliannya adalah bukti dedikasi otodidak; ia menguasai bahasa-bahasa ini murni melalui eksplorasi, eksperimen, dan penerapan praktis. Setiap baris kode mencerminkan solusi non-standar yang hanya dapat dikuasai oleh mereka yang mendalami internet tanpa dibatasi kurikulum formal.">
                         His expertise is a testament to his <span class="font-semibold" data-en="self-taught" data-id="otodidak">self-taught</span> dedication; he masters these languages purely through exploration, experimentation, and practical application. Every line of code reflects non-standard solutions that can only be mastered by those who delve deeply into the internet unconstrained by formal curriculum.
-                        <span class="text-sm italic text-gray-500 block mt-1" data-en="[Self-taught mastery on full display.]" data-id="[Kemahiran otodidak sepenuhnya ditampilkan.]">[Self-taught mastery on full display.]</span>
+                        <span class="text-sm italic text-gray-500 block mt-1" data-en="[His mastery is purely self-taught, built on practical exploration and non-standard solutions.]" data-id="[Penguasaannya murni otodidak, dibangun di atas eksplorasi praktis dan solusi non-standar.]">[His mastery is purely self-taught, built on practical exploration and non-standard solutions.]</span>
                     </p>
                     <div class="flex flex-wrap gap-2 text-sm mt-6">
                         <span class="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full">HTML/CSS/JS</span>
@@ -191,7 +195,7 @@
                    data-en="His ability to dominate a game does not come from long playing hours, but from his skill in breaking down the game's architecture. With this knowledge, he creates tools that are undetected and efficient, turning the gaming experience into an experiment in system control." 
                    data-id="Kemampuannya untuk mendominasi game bukan berasal dari waktu bermain yang lama, melainkan dari kemampuannya untuk memecah arsitektur game. Dengan bekal ini, ia menciptakan alat yang tidak terdeteksi dan efisien, mengubah pengalaman bermain game menjadi eksperimen kontrol sistem.">
                     His ability to dominate a game does not come from long playing hours, but from his skill in breaking down the game's architecture. With this knowledge, he creates tools that are <span class="font-semibold" data-en="undetected" data-id="tidak terdeteksi">undetected</span> and <span class="font-semibold" data-en="efficient" data-id="efisien">efficient</span>, turning the gaming experience into an experiment in system control.
-                    <span class="text-sm italic text-gray-500 block mt-1" data-en="[His domination comes from breaking down game architecture.]" data-id="[Dominasinya berasal dari pembongkaran arsitektur game.]">[His domination comes from breaking down game architecture.]</span>
+                    <span class="text-sm italic text-gray-500 block mt-1" data-en="[His domination comes from breaking down game architecture, allowing him to create efficient and undetected tools.]" data-id="[Dominasinya berasal dari pembongkaran arsitektur game, memungkinkannya membuat alat yang efisien dan tidak terdeteksi.]">[His domination comes from breaking down game architecture, allowing him to create efficient and undetected tools.]</span>
                 </p>
                 <h3 class="text-2xl font-semibold text-white mb-4 mt-6" data-en="Advanced Scripting Features" data-id="Fitur Skrip Tingkat Lanjut">Advanced Scripting Features</h3>
                 <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 font-medium">
@@ -220,7 +224,7 @@
                    data-en="Despite being a homebody, his leadership is strategic and centralized. He manages his team and business with the precision of a cyber commander, bridging physical isolation with a strong online presence and authority." 
                    data-id="Walaupun suka di rumah, kepemimpinannya bersifat strategis dan terpusat. Ia mengelola tim dan bisnis dengan presisi seorang komandan siber, menjembatani isolasi fisik dengan kehadiran dan otoritas yang kuat secara online.">
                     Despite being a homebody, his leadership is <span class="font-semibold" data-en="strategic and centralized" data-id="strategis dan terpusat">strategic and centralized</span>. He manages his team and business with the precision of a cyber commander, bridging physical isolation with a strong online presence and authority.
-                    <span class="text-sm italic text-gray-500 block mt-1" data-en="[Strategic operator bridging isolation with authority.]" data-id="[Operator strategis menjembatani isolasi dengan otoritas.]">[Strategic operator bridging isolation with authority.]</span>
+                    <span class="text-sm italic text-gray-500 block mt-1" data-en="[Despite being a homebody, his leadership is strategic and centralized, managing his team with the precision of a cyber commander.]" data-id="[Walaupun suka di rumah, kepemimpinannya bersifat strategis dan terpusat, mengelola timnya dengan presisi seorang komandan siber.]">[Despite being a homebody, his leadership is strategic and centralized, managing his team with the precision of a cyber commander.]</span>
                 </p>
                 <ul class="space-y-2 text-gray-300 list-none pl-0 mt-6 font-medium">
                     <li class="flex items-start" data-en="Manages members and organizes complex projects." data-id="Mengelola anggota dan mengorganisir proyek yang kompleks."><span class="mr-3 text-neon-blue">»</span> Manages members and organizes complex projects.</li>
@@ -274,6 +278,9 @@
 
     <script>
         const STORAGE_KEY = 'vinzee_lang';
+        const FLAG_INDONESIA_URL = 'https://files.catbox.moe/zgvyuh.jpg';
+        const FLAG_AMERICA_URL = 'https://files.catbox.moe/31bept.jpg'; // Menggunakan nama variabel yang jelas
+        
         let currentLang = 'en'; // Default language is English
 
         // Function to switch between tabs (from original script.js logic)
@@ -305,17 +312,12 @@
             }
         }
 
-        // Initialize tabs on load
-        document.addEventListener('DOMContentLoaded', () => {
-            switchTab('home'); // Ensure the 'home' tab is active on load
-            applyLanguage(localStorage.getItem(STORAGE_KEY) || 'en'); // Apply language from storage or default to 'en'
-        });
-
         // Function to apply language to all elements
         function applyLanguage(lang) {
             currentLang = lang;
             document.documentElement.lang = lang;
             
+            // Apply translation to all data- attributes
             const elements = document.querySelectorAll('[data-en]');
             elements.forEach(el => {
                 const text = el.getAttribute(`data-${lang}`);
@@ -324,14 +326,20 @@
                 }
             });
 
-            // Update button text and title
+            // Update button icon and title based on the CURRENT language (what clicking the button will DO)
             const button = document.getElementById('translate-button');
+            const flagImage = button.querySelector('.flag-icon');
+
             if (lang === 'en') {
+                // Currently in English. Button should indicate translation TO Indonesian.
                 button.setAttribute('title', 'Translate to Indonesian');
-                button.innerHTML = '<span class="flag-icon" role="img" aria-label="Indonesian Flag">🇮🇩</span>';
+                flagImage.setAttribute('src', FLAG_INDONESIA_URL);
+                flagImage.setAttribute('alt', 'Indonesian Flag');
             } else {
+                // Currently in Indonesian. Button should indicate translation TO English.
                 button.setAttribute('title', 'Translate to English');
-                button.innerHTML = '<span class="flag-icon" role="img" aria-label="UK/US Flag">🇬🇧</span>'; // Using UK flag for English as a standard icon
+                flagImage.setAttribute('src', FLAG_AMERICA_URL); // Menggunakan gambar bendera Amerika
+                flagImage.setAttribute('alt', 'American Flag'); 
             }
         }
 
@@ -341,6 +349,12 @@
             localStorage.setItem(STORAGE_KEY, newLang);
             applyLanguage(newLang);
         }
+
+        // Initialize tabs and language on load
+        document.addEventListener('DOMContentLoaded', () => {
+            switchTab('home'); // Ensure the 'home' tab is active on load
+            applyLanguage(localStorage.getItem(STORAGE_KEY) || 'en'); // Apply language from storage or default to 'en'
+        });
 
         // (The original script.js file may contain additional logic that needs to be maintained.)
     </script>

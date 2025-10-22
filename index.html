@@ -4,18 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vinzee-kun | The Digital Architect</title>
+    <!-- Memuat Tailwind CSS dari CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <!-- Memuat file CSS Kustom Anda -->
     <link rel="stylesheet" href="style.css">
     
+    <!-- Memuat Font Awesome untuk Ikon (GitHub & TikTok) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body class="min-h-screen">
 
+    <!-- Header / Hero Section -->
     <header class="py-12 md:py-20 border-b border-gray-700/50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             
-            <img src="https://files.catbox.moe/itb96q.jpeg" alt="Vinzee-kun Logo" class="w-24 h-24 sm:w-32 sm:h-32 mx-auto rounded-full object-cover shadow-neon mb-6">
+            <!-- Logo Vinzee-kun -->
+            <!-- TELAH DITAMBAH: ring-4 ring-blue-500/50 untuk kontras di latar belakang gelap -->
+            <img src="https://files.catbox.moe/itb96q.jpeg" alt="Vinzee-kun Logo" 
+                 class="w-24 h-24 sm:w-32 sm:h-32 mx-auto rounded-full object-cover shadow-neon mb-6 ring-4 ring-blue-500/50">
             
             <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold mb-4 leading-tight gradient-text">
                 Vinzee-kun
@@ -29,8 +36,10 @@
         </div>
     </header>
 
+    <!-- Main Content Container & Tabs -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
 
+        <!-- Tab Navigation -->
         <div class="border-b border-gray-700 mb-8 md:mb-12 sticky top-0 bg-bg-color z-10 pt-4 -mt-4">
             <nav class="flex space-x-4 sm:space-x-8 -mb-px" role="tablist">
                 <button id="tab-home" class="tab-button active py-3 text-sm sm:text-base font-medium text-gray-400 focus:outline-none" onclick="switchTab('home')" role="tab">
@@ -48,6 +57,9 @@
             </nav>
         </div>
 
+        <!-- Tab Content Containers -->
+
+        <!-- 1. Home / Intro Content -->
         <div id="content-home" class="tab-content space-y-8">
             <div class="bg-card p-6 md:p-10 rounded-xl shadow-lg border border-gray-700/50 card-item">
                 <h2 class="text-3xl font-bold text-neon-blue mb-4">A Hybrid of Mastery</h2>
@@ -75,9 +87,11 @@
             </div>
         </div>
 
+        <!-- 2. The Master of Code Content -->
         <div id="content-code" class="tab-content hidden space-y-8">
             <h2 class="text-3xl font-bold text-neon-blue mb-6">⚙️ The Master of Code</h2>
             <div class="grid lg:grid-cols-2 gap-8">
+                <!-- Core Skills -->
                 <div class="bg-card p-8 rounded-xl shadow-neon/10 border border-gray-700/50 card-item">
                     <h3 class="text-2xl font-semibold text-white mb-4">Programming Command</h3>
                     <p class="text-gray-400 mb-6">Vinzee-kun commands multiple programming languages, crafting every line with precision and style. His code isn't just functional; it's engineered experience.</p>
@@ -89,6 +103,7 @@
                     </div>
                 </div>
 
+                <!-- Capabilities -->
                 <div class="bg-card p-8 rounded-xl shadow-neon/10 border border-gray-700/50 card-item">
                     <h3 class="text-2xl font-semibold text-white mb-4">Engineering Capabilities</h3>
                     <ul class="space-y-3 text-gray-300 list-none pl-0">
@@ -101,6 +116,7 @@
             </div>
         </div>
 
+        <!-- 3. The True Gamer, Not Just a Player Content -->
         <div id="content-gaming" class="tab-content hidden space-y-8">
             <h2 class="text-3xl font-bold text-neon-blue mb-6">🎮 The True Gamer, Not Just a Player</h2>
             <div class="bg-card p-8 rounded-xl shadow-neon/10 border border-gray-700/50 card-item">
@@ -119,9 +135,11 @@
             </div>
         </div>
 
+        <!-- 4. A Visionary Leader & Community Builder Content -->
         <div id="content-vision" class="tab-content hidden space-y-10">
             <h2 class="text-3xl font-bold text-neon-blue mb-6">💡 A Visionary Leader & Operator</h2>
 
+            <!-- XploitForce Leadership -->
             <div class="bg-card p-8 rounded-xl shadow-neon/10 border border-gray-700/50 card-item">
                 <h3 class="text-2xl font-semibold text-white mb-4">Community & Strategy: XploitForce Founder</h3>
                 <p class="text-gray-400 mb-4">
@@ -135,6 +153,7 @@
             </div>
 
             <div class="grid md:grid-cols-2 gap-8">
+                <!-- Visual Visionary -->
                 <div class="bg-card p-8 rounded-xl shadow-neon/10 border border-gray-700/50 card-item">
                     <h3 class="text-2xl font-semibold text-white mb-4">🎬 The Visual Visionary</h3>
                     <p class="text-gray-400">
@@ -142,6 +161,7 @@
                     </p>
                 </div>
 
+                <!-- Discipline & Mastery -->
                 <div class="bg-card p-8 rounded-xl shadow-neon/10 border border-gray-700/50 card-item">
                     <h3 class="text-2xl font-semibold text-white mb-4">💪 Mind, Muscle, and Mastery</h3>
                     <p class="text-gray-400">
@@ -153,15 +173,19 @@
 
     </main>
 
+    <!-- Footer yang diperbarui dengan tautan sosial -->
     <footer class="py-10 mt-12 border-t border-gray-700/50 text-center text-gray-500 text-sm">
         <p class="text-lg font-semibold mb-3 text-white">Connect with Vinzee-kun</p>
         <div class="flex justify-center space-x-6 text-2xl mb-4">
+            <!-- Tautan GitHub dengan Ikon Font Awesome -->
             <a href="https://github.com/Viunze" target="_blank" class="hover:text-neon-blue transition-colors duration-200" title="GitHub">
                 <i class="fa-brands fa-github"></i>
             </a>
+            <!-- Tautan TikTok dengan Ikon Font Awesome -->
             <a href="https://www.tiktok.com/@viunze?is_from_webapp=1&sender_device=pc" target="_blank" class="hover:text-neon-blue transition-colors duration-200" title="TikTok">
                 <i class="fa-brands fa-tiktok"></i>
             </a>
+            <!-- Tautan Lain (contoh) -->
             <a href="#" class="hover:text-neon-blue transition-colors duration-200" title="WhatsApp">
                 <i class="fa-brands fa-whatsapp"></i>
             </a>
@@ -173,6 +197,7 @@
         <p class="mt-2 text-xs">Crafted with precision in the digital realm. © 2024</p>
     </footer>
 
+    <!-- Memuat file JavaScript Kustom Anda -->
     <script src="script.js"></script>
 </body>
 </html>

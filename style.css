@@ -1,74 +1,155 @@
-/* Gaya Kustom untuk tema gelap premium */
+/* Gaya Kustom untuk tema gelap premium (style.css) */
 :root {
-    --primary-color: #3b82f6; /* Electric Blue */
-    --bg-color: #0d1117;     /* Very Dark Gray/Black */
-    --card-color: #161b22;   /* Slightly lighter dark background */
+    --primary-color: #3b82f6; /* Electric Blue/Neon Blue */
+    --secondary-color: #60a5fa; /* Lighter Blue */
+    --accent-color: #10b981; /* Green Accent for Checks */
+    --bg-color: #030712; /* Extreme Dark Black (Vanta Black feel) */
+    --card-color: #111827; /* Darker Slate Gray/Near Black */
+    --border-color: #1f2937; /* Subtle border for separation */
+    --text-light: #e5e7eb; /* Very light gray for readability */
+    --text-medium: #9ca3af; /* Medium gray for secondary text */
 }
+
+/* Base Styles */
 body {
     font-family: 'Inter', sans-serif;
     background-color: var(--bg-color);
-    color: #e2e8f0; /* Light text */
+    color: var(--text-light);
+    /* Menambahkan pola latar belakang minimalis untuk kedalaman */
+    background-image: radial-gradient(circle at 1px 1px, var(--border-color) 1px, transparent 0);
+    background-size: 20px 20px;
 }
 
-/* Utilitas Kelas */
+/* Utilitas Kelas (Menjaga agar tetap konsisten dengan HTML) */
 .text-neon-blue {
     color: var(--primary-color);
 }
 .bg-card {
     background-color: var(--card-color);
+    border: 1px solid var(--border-color); /* Garis batas halus premium */
 }
 .shadow-neon {
-    box-shadow: 0 0 10px rgba(59, 130, 246, 0.5), 0 0 20px rgba(59, 130, 246, 0.3);
+    /* Meningkatkan bayangan untuk tampilan yang lebih kuat */
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.4);
+}
+.text-green-400 {
+    color: var(--accent-color); /* Memastikan warna hijau aksen konsisten */
 }
 
-/* Gaya Tab Navigation */
+/* Gaya Header/Hero */
+header {
+    border-color: var(--border-color) !important;
+}
+.ring-4.ring-blue-500\/50 {
+    /* Memperkuat cincin pada avatar */
+    --tw-ring-opacity: 1;
+    --tw-ring-color: rgba(59, 130, 246, 0.7);
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.7);
+}
+
+
+/* --- Gaya Tab Navigation Premium --- */
+
+/* Tab Button Base Style */
 .tab-button {
-    transition: all 0.3s ease;
+    transition: all 0.3s ease, color 0.2s;
     position: relative;
-    color: #94a3b8; /* Teks abu-abu default */
+    color: var(--text-medium); /* Teks abu-abu default */
+    padding-bottom: 0.75rem !important; /* Memberi ruang di bawah */
+    border-radius: 4px 4px 0 0;
 }
+
+/* Tab Active Style */
 .tab-button.active {
-    color: #ffffff;
-    font-weight: 600;
+    color: var(--text-light) !important; /* Warna teks putih cerah */
+    font-weight: 700; /* Lebih tebal saat aktif */
 }
+
+/* Indikator Garis Bawah Premium */
 .tab-button.active::after {
     content: '';
     position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background-color: var(--primary-color);
-    border-radius: 9999px;
-    box-shadow: 0 0 8px rgba(59, 130, 246, 0.8);
+    bottom: -1px; /* Naik sedikit di atas garis batas */
+    left: 10%;
+    width: 80%; /* Garis yang sedikit lebih pendek dari lebar tombol */
+    height: 4px; /* Garis lebih tebal */
+    background: linear-gradient(90deg, transparent 0%, var(--primary-color) 20%, var(--secondary-color) 80%, transparent 100%);
+    border-radius: 2px;
+    box-shadow: 0 0 12px rgba(59, 130, 246, 1); /* Bayangan neon yang kuat */
+    animation: pulse-line 2s infinite alternate; /* Animasi berdenyut halus */
 }
 
-/* Efek Hover Premium untuk Kartu */
+/* Animasi untuk Garis Bawah */
+@keyframes pulse-line {
+    from {
+        opacity: 0.8;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Hover Effect (saat tidak aktif) */
+.tab-button:not(.active):hover {
+    color: var(--secondary-color);
+}
+
+/* Tab Navigation Container */
+.sticky-tab-nav {
+    background-color: var(--bg-color); /* Memastikan latar belakang tetap gelap saat sticky */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); /* Bayangan halus saat sticky */
+}
+.border-b.border-gray-700 {
+    border-color: var(--border-color) !important;
+}
+
+
+/* --- Efek Hover Premium untuk Kartu (Konten) --- */
+
 .card-item {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s ease;
+    background-color: var(--card-color);
 }
 .card-item:hover {
-    transform: translateY(-5px); /* Lift effect */
-    box-shadow: 0 10px 25px rgba(59, 130, 246, 0.4); /* Stronger neon shadow */
+    transform: translateY(-8px); /* Efek mengangkat yang lebih dramatis */
+    /* Bayangan yang lebih dalam dengan blur yang lebih besar, fokus pada warna neon */
+    box-shadow: 0 15px 40px rgba(59, 130, 246, 0.3), 0 0 15px rgba(59, 130, 246, 0.7); 
+    border-color: var(--primary-color); /* Garis batas neon saat dihover */
 }
 
-/* Scrollbar Kustom */
+
+/* --- Scrollbar Kustom Premium --- */
+
 ::-webkit-scrollbar {
-    width: 8px;
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: var(--card-color);
 }
 ::-webkit-scrollbar-thumb {
-    background: rgba(59, 130, 246, 0.4);
+    background: rgba(59, 130, 246, 0.6);
     border-radius: 10px;
+    border: 2px solid var(--card-color);
 }
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--primary-color);
+    background: var(--secondary-color);
 }
 
-/* Efek teks gradien untuk judul utama */
+
+/* --- Efek teks gradien untuk judul utama (Ditingkatkan) --- */
+
 .gradient-text {
-    background: linear-gradient(90deg, #3b82f6, #60a5fa, #ffffff);
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--text-light));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     text-fill-color: transparent;
+    text-shadow: 0 0 5px rgba(59, 130, 246, 0.5); /* Menambahkan bayangan teks neon */
+    letter-spacing: -0.02em; /* Sedikit ketat agar terlihat lebih modern */
+}
+
+/* Link Sosial di Footer */
+footer a:hover {
+    color: var(--primary-color) !important;
+    text-shadow: 0 0 8px rgba(59, 130, 246, 0.8);
 }

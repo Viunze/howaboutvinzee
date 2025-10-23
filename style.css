@@ -57,7 +57,22 @@ header {
     color: var(--text-medium); /* Teks abu-abu default */
     padding-bottom: 0.75rem !important; /* Memberi ruang di bawah */
     border-radius: 4px 4px 0 0;
+    
+    /* PENTING: Gaya Flexbox untuk menata Logo (IMG) dan Teks */
+    display: flex; 
+    align-items: center; 
+    gap: 8px; /* Jarak antara ikon dan teks */
 }
+
+/* Logo di dalam tombol tab dari HTML */
+.tab-logo {
+    /* Ini hanya fallback. Gaya utama ada di <style> di index.html */
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    filter: grayscale(100%) brightness(150%) drop-shadow(0 0 1px rgba(59, 130, 246, 0.5)); 
+}
+
 
 /* Tab Active Style */
 .tab-button.active {
